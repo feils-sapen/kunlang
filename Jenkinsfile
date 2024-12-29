@@ -4,6 +4,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                 nodejs(nodeJSInstallationName: 'nodejs-23.5.0') {
+                    sh 'npm install'
+                }
             }
         }
         stage('Test') {
