@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Main circle -->
+    <circle cx="100" cy="100" r="90" fill="#4A90E2" opacity="0.9"/>
+    
+    <!-- Stylized "K" -->
+    <path d="M70 50 L70 150 M70 100 L120 50 M70 100 L120 150" 
+          stroke="white" 
+          stroke-width="12" 
+          fill="none" 
+          stroke-linecap="round"/>
+    
+    <!-- Decorative element -->
+    <circle cx="100" cy="100" r="40" 
+            stroke="white" 
+            stroke-width="4" 
+            fill="none" 
+            opacity="0.5"/>
+</svg>

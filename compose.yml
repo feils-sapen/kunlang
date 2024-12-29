@@ -1,0 +1,23 @@
+services:
+  app:
+    image: nginx
+    ports:
+      - "8080:80"
+    networks:
+      - main
+    volumes:
+      - ./:/usr/share/nginx/html
+      - main:/mnt
+  console:
+    image: console:latest
+    command: /bin/bash 
+    stdin_open: true
+    tty: true
+    networks:
+      - main
+    volumes:
+      - main:/mnt
+networks:
+  main:
+volumes:
+  main:
