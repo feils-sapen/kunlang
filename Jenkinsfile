@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building..****'
                  nodejs(nodeJSInstallationName: 'nodejs-23.5.0') {
                     sh 'npm install'
                 }
