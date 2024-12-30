@@ -25,5 +25,11 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+         stage('镜像') {
+            steps {
+                echo '构建kunlang镜像'
+                sh 'docker build -t kunlang-registry.sapenlei.xyz/kunlang-nodejs:latest ./'
+            }
+        }
 }
 }
