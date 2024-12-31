@@ -21,7 +21,7 @@ pipeline {
         stage('镜像') {
             steps {
                 echo '镜像'
-                sh 'docker buildx build  --platform linux/amd64,linux/arm64 -t kunlang-registry.sapenlei.xyz/kunlang-node:latest ./'
+                sh 'docker buildx build  --platform linux/amd64,linux/arm64 -t kunlang-registry.sapenlei.xyz/kunlang-node:latest .'
             }
         }
 
