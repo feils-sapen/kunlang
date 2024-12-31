@@ -40,15 +40,18 @@ pipeline {
                     usernamePassword(
                         credentialsId: 'kunlang-registry', 
                         passwordVariable: 'password', 
-                        usernameVariable: 'username')]) {
+                        usernameVariable: 'username')
+                        ]) {
                      sh 'docker login -u ${username} -p ${password} kunlang-registry.sapenlei.xyz'
                      sh 'docker push kunlang-registry.sapenlei.xyz/kunlang-node:latest'
                      sh 'docker logout'
                    }
+                   
+                   
                 }
             }
         }
     }
         
 }
-}
+
