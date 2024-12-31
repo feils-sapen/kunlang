@@ -31,6 +31,24 @@ pipeline {
                 sh 'docker build -t kunlang-registry.sapenlei.xyz/kunlang-node:latest .'
             }
         }
+
+        stage('推送') {
+            steps {
+                echo '推送'
+                script {
+                   withCredentials([
+                    usernamePassword(
+                        credentialsId: 'kunlang-registry', 
+                        passwordVariable: 'password', 
+                        usernameVariable: 'username')]) {
+                     sh 'docker login -u ${username} -p ${password} kunlang-registry.sapenlei.xyz'
+                     sh 'docker push kunlang-registry.sapenlei.xyz/kunlang-node:latest'
+                     sh 'docker logout'
+                   }
+                }
+            }
+        }
+    }
         
 }
 }
