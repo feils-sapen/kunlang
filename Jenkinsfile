@@ -55,7 +55,7 @@ pipeline {
                   script {
             def ssh = 'ssh -o StrictHostKeyChecking=no -l root 8.219.53.244'
             try {
-                sshagent(['aliyun-kunlang']) {
+                sshagent(['kunlang-docker']) {
                     withCredentials([usernamePassword(credentialsId: 'kunlang-registry', passwordVariable: 'password', usernameVariable: 'username')]) {
                         sh "$ssh docker login -u ${username} -p ${password} kunlang-registry.sapenlei.xyz"
                         sh "$ssh docker pull kunlang-registry.sapenlei.xyz/kunlang-node:latest"
