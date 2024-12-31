@@ -66,7 +66,7 @@ pipeline {
                         sh "$ssh docker login -u ${username} -p ${password} kunlang-registry.sapenlei.xyz"
                         sh "$ssh docker pull kunlang-registry.sapenlei.xyz/kunlang-node:latest"
                         sh "$ssh docker rm kunlang-node -f"
-                        sh "$ssh docker run -d -p 3303:3000 --name kunlang-node kunlang-registry.sapenlei.xyz/kunlang-node:latest"
+                        sh "$ssh docker run -d -p 3304:3000 --name kunlang-node kunlang-registry.sapenlei.xyz/kunlang-node:latest"
                 }
                 }
             } catch (Exception e) {
