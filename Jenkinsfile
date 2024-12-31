@@ -36,7 +36,7 @@ pipeline {
                         usernameVariable: 'username')
                         ]) {
                      sh 'docker login -u ${username} -p ${password} kunlang-registry.sapenlei.xyz'
-                     sh 'docker push kunlang-registry.sapenlei.xyz/kunlang-node:latest'
+                     sh 'docker buildx build --push --platform linux/amd64,linux/arm64 -t kunlang-registry.sapenlei.xyz/kunlang-node:latest ./'
                      sh 'docker logout'
                    }
                    
