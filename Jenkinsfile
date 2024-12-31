@@ -21,7 +21,6 @@ pipeline {
         stage('镜像') {
             steps {
                 echo '镜像'
-                sh 'docker buildx create --name kunlang --use --bootstrap'
             }
         }
 
