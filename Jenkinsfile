@@ -60,11 +60,11 @@ pipeline {
                         sh "${ssh} 'docker run -d -p 3003:3000 --name kunlang-node kunlang-registry.sapenlei.xyz/kunlang-node:latest'"
                 }
                 }
-            }
-           } catch (Exception e) {
+            } catch (Exception e) {
                 echo "部署失败 ${e.message}"
                 currentBuild.result = 'FAILURE'
             }
+           } 
         }
 
        
