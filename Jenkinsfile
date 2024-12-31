@@ -35,7 +35,7 @@ pipeline {
                         usernameVariable: 'username')
                         ]) {
                      sh 'docker login -u ${username} -p ${password} kunlang-registry.sapenlei.xyz'
-                     sh 'docker buildx build  --platform linux/amd64,linux/arm64 -t kunlang-registry.sapenlei.xyz/kunlang-node:1.0.2 .'
+                     sh 'docker buildx build --push  --platform linux/amd64,linux/arm64 -t kunlang-registry.sapenlei.xyz/kunlang-node:latest .'
                      sh 'docker logout'
                    }
                    
@@ -63,9 +63,9 @@ pipeline {
                                  usernameVariable: 'username')
                                  ]) {
                         sh "$ssh docker login -u ${username} -p ${password} kunlang-registry.sapenlei.xyz"
-                        sh "$ssh docker pull kunlang-registry.sapenlei.xyz/kunlang-node:1.0.2"
+                        sh "$ssh docker pull kunlang-registry.sapenlei.xyz/kunlang-node:latest"
                         sh "$ssh docker rm kunlang-node -f"
-                        sh "$ssh docker run -d -p 3304:3000 --name kunlang-node kunlang-registry.sapenlei.xyz/kunlang-node:1.0.2"
+                        sh "$ssh docker run -d -p 3304:3000 --name kunlang-node kunlang-registry.sapenlei.xyz/kunlang-node:latest"
                 }
                 }
             } catch (Exception e) {
