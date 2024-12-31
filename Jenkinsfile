@@ -17,14 +17,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
-            when  {
-                branch 'main'
-            }
-            steps {
-                echo 'Deploying.......****'
-            }
-        }
+       
         stage('镜像') {
             steps {
                 echo '镜像'
@@ -49,6 +42,26 @@ pipeline {
                    
                    
                 }
+            }
+        }
+
+         stage('Deploy') {
+            when  {
+                branch 'main'
+            }
+           script {
+            def ssh = 'ssh -o StrictHostKeyChecking=no -l root 8.219.68.175'
+            try {
+                sshagent(['aliyun-kunlang']) {
+                    withCredentials([usernamePassword(credentialsId: 'kunlang-registry', passwordVariable: 'password', usernameVariable: 'username')]) {
+                        sh "${ssh} 'docker login -u ${username} -p ${password} kunlang-registry.sapenlei.xyz'"
+                        sh "${ssh} 'docker pull kunlang-registry.sapenlei.xyz/kunlang-node:latest'"
+                        sh "${ssh} 'docker rm kunlang-node -f"
+                        sh "${ssh} 'docker run -d -p 3003:3000 --name kunlang-node kunlang-registry.sapenlei.xyz/kunlang-node:latest'"
+                }
+           } catch (Exception e) {
+                echo "部署失败 ${e.message}"
+                currentBuild.result = 'FAILURE'
             }
         }
     }

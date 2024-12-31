@@ -8,6 +8,6 @@ test("plusOne", () => {
 
 test('get', async () => {
    const res = await request(app).get('/').expect(200)
-   expect(res.text).toBe('Hello, 鲲浪!')
+   expect(res.text).toBe("🤡 Hello, 鲲浪!");
 })
 

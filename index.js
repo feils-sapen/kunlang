@@ -4,7 +4,7 @@ export const app = express();
 
 const name = process.env.NAME || "鲲浪";
 app.get("/", (req, res) => {
-  res.send(`Hello, ${name}!`);
+  res.send(`🤡 Hello, ${name}!`);
 });
 
 app.get("/about", (req, res) => {
