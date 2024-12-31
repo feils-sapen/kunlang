@@ -50,7 +50,7 @@ pipeline {
                 branch 'main'
             }
            script {
-            def ssh = 'ssh -o StrictHostKeyChecking=no -l root 8.219.68.175'
+            def ssh = 'ssh -o StrictHostKeyChecking=no -l root 8.219.53.244'
             try {
                 sshagent(['aliyun-kunlang']) {
                     withCredentials([usernamePassword(credentialsId: 'kunlang-registry', passwordVariable: 'password', usernameVariable: 'username')]) {
@@ -66,5 +66,7 @@ pipeline {
         }
     }
         
+}
+    }
 }
 
