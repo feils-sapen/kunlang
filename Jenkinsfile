@@ -49,7 +49,10 @@ pipeline {
             when  {
                 branch 'main'
             }
-           script {
+            
+            steps {
+                echo '部署'
+                  script {
             def ssh = 'ssh -o StrictHostKeyChecking=no -l root 8.219.53.244'
             try {
                 sshagent(['aliyun-kunlang']) {
@@ -65,6 +68,7 @@ pipeline {
                 currentBuild.result = 'FAILURE'
             }
            } 
+            }
         }
 
        
